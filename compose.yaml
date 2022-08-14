@@ -1,0 +1,16 @@
+# run minimal pulsar in standalone mode
+
+name: pulsar-standalone
+
+services:
+  broker:
+    image: apachepulsar/pulsar:2.8.3
+    command: bin/pulsar standalone
+    ports:
+      - "6650:6650/tcp"
+      - "8080:8080/tcp"
+    volumes:
+      - ./data:/pulsar/data
+      # map current as /home to make it possible to run project scripts from an
+      # interactive container shell
+      - ./:/home
